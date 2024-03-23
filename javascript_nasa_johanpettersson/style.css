@@ -1,0 +1,271 @@
+@charset "UTF-8";
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  transition: 0.3s;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  background-image: url(img/win-xp.jpg);
+  background-size: cover;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 1.5rem;
+  color: #f6f2e9;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0d5fd3;
+  padding: 1rem;
+  color: #f6f2e9;
+}
+header #switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 1rem;
+  align-items: center;
+}
+@media (min-width: 680px) {
+  .container {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .container h2 {
+    text-align: center;
+  }
+}
+@media (min-width: 1040px) {
+  .container {
+    padding: 2rem;
+    flex-wrap: none;
+    align-content: center;
+    flex-direction: column;
+  }
+  .container h2 {
+    text-align: center;
+  }
+}
+.container .inputContainer {
+  background-color: #edeae2;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  height: 300px;
+  border: 4px solid #0d5fd3;
+  border-top: 30px solid #0d5fd3;
+  max-width: 600px;
+  width: 100%;
+}
+.container .inputContainer input {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  padding: 0 1rem;
+  border-style: none;
+  border: 1px solid #1e1e1e;
+}
+.container .inputContainer ::-moz-placeholder {
+  color: #1e1e1e;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.container .inputContainer ::placeholder {
+  color: #1e1e1e;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.container .inputContainer #btn_add {
+  padding: 0rem 1rem;
+  background-color: #ffffff;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e1e1e;
+  border: 1px solid #280847;
+}
+.container .inputContainer #btn_add:enabled {
+  background-color: #ffffff;
+  border: 4px solid #0d5fd3;
+  color: #1e1e1e;
+  font-weight: 900;
+}
+.container .inputContainer #btn_add:focus {
+  border: 2px solid #0d5fd3;
+}
+.container .contentContainer {
+  max-width: 1400px;
+}
+.container .contentContainer .cardContainer {
+  margin-top: 1rem;
+}
+@media (min-width: 680px) {
+  .container .contentContainer .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+.container .contentContainer .cardContainer .card {
+  background-color: #edeae2;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 2px solid #0d5fd3;
+  border-top: 30px solid #0d5fd3;
+}
+@media (min-width: 680px) {
+  .container .contentContainer .cardContainer .card {
+    flex: 1 0 45%;
+    margin: 0;
+  }
+}
+@media (min-width: 1040px) {
+  .container .contentContainer .cardContainer .card {
+    flex: 0 0 calc(25% - 0.75rem);
+    margin: 0;
+  }
+}
+.container .contentContainer .cardContainer .card .callsign {
+  text-align: center;
+}
+.container .contentContainer .cardContainer .card .info {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.container .contentContainer .cardContainer .card .imgHolder .image {
+  max-width: 100%;
+}
+.container .contentContainer .cardContainer .noCard {
+  background-color: #edeae2;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  border: 2px solid #0d5fd3;
+  border-top: 30px solid #0d5fd3;
+}
+.container .contentContainer .cardContainer .noCard .callsign {
+  text-align: center;
+}
+.container .contentContainer .cardContainer .noCard .imgHolder .image {
+  max-width: 100%;
+}
+
+/* switch - Boxen runt slider */
+.switchBtn {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  /* Gömmer default HTML checkbox */
+  /* slider */
+}
+.switchBtn input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switchBtn input:checked + .slider {
+  background-color: #f6f2e9;
+}
+.switchBtn input:checked + .slider:before {
+  transform: translateX(23px);
+  background-color: #3d1d84;
+}
+.switchBtn input:focus + .slider {
+  box-shadow: 0 0 2px #3d1d84;
+}
+.switchBtn .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3d1d84;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+.switchBtn .slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #f6f2e9;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.dark {
+  background-image: url(img/windows_xp_moon.png);
+  background-size: cover;
+}
+.dark header {
+  background-color: #0a0b3f;
+}
+.dark .container .inputContainer {
+  background-color: #3d1d84;
+  border: 4px solid #0a0b3f;
+  border-top: 30px solid #0a0b3f;
+  color: #f6f2e9;
+}
+.dark .container .inputContainer #btn_add {
+  padding: 0rem 1rem;
+  background-color: #ffffff;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1e1e1e;
+  border: 1px solid #280847;
+}
+.dark .container .inputContainer #btn_add:enabled {
+  background-color: #ffffff;
+  border: 3px solid #0a0b3f;
+  color: #1e1e1e;
+  font-weight: 900;
+}
+.dark .container .inputContainer #btn_add:focus {
+  border: 2px solid #3d1d84;
+}
+.dark .container h2 {
+  color: #f6f2e9;
+}
+.dark .container .contentContainer .card {
+  background-color: #3d1d84;
+  border: 4px solid #0a0b3f;
+  border-top: 30px solid #0a0b3f;
+  color: #f6f2e9;
+}
+.dark .container .contentContainer .noCard {
+  background-color: #3d1d84;
+  border: 4px solid #0a0b3f;
+  border-top: 30px solid #0a0b3f;
+  color: #f6f2e9;
+}/*# sourceMappingURL=style.css.map */

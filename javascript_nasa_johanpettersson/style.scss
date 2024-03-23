@@ -1,0 +1,301 @@
+$darkmode-darker: #280847;
+$darkmode-dark: #3d1d84;
+$darkmode-text: #f6f2e9;
+$darkmode-purple: #0a0b3f;
+$lightmode-light: #edeae2;
+$lightmode-blue: #0d5fd3;
+$lightmode-text: #1e1e1e;
+$field: #ffffff;
+$bg-light: url(img/win-xp.jpg);
+$bg-dark: url(img/windows_xp_moon.png);
+
+*,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  transition: 0.3s;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-image: $bg-light;
+  background-size: cover;
+  height: 100vh;
+}
+h1 {
+  font-size: 1.5rem;
+  color: $darkmode-text;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $lightmode-blue;
+  padding: 1rem;
+  color: $darkmode-text;
+  #switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.container {
+  margin: 1rem;
+  align-items: center;
+  @media (min-width: 680px) {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    h2 {
+      text-align: center;
+    }
+  }
+  @media (min-width: 1040px) {
+    padding: 2rem;
+    flex-wrap: none;
+    align-content: center;
+    flex-direction: column;
+    h2 {
+      text-align: center;
+    }
+  }
+  .inputContainer {
+    background-color: $lightmode-light;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    height: 300px;
+    border: 4px solid $lightmode-blue;
+    border-top: 30px solid $lightmode-blue;
+    max-width: 600px;
+    width: 100%;
+    input {
+      width: 100%;
+      margin-bottom: 1rem;
+      background-color: $field;
+      padding: 0 1rem;
+      // border: 2px solid$lightmode-blue;
+      border-style: none;
+      border: 1px solid $lightmode-text;
+    }
+    ::placeholder {
+      color: $lightmode-text;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+    #btn_add {
+      padding: 0rem 1rem;
+      background-color: $field;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: $lightmode-text;
+      border: 1px solid $darkmode-darker;
+
+      &:enabled {
+        background-color: $field;
+        border: 4px solid $lightmode-blue;
+        color: $lightmode-text;
+        font-weight: 900;
+      }
+      &:focus {
+        border: 2px solid $lightmode-blue;
+      }
+    }
+  }
+  .contentContainer {
+    max-width: 1400px;
+    .cardContainer {
+      margin-top: 1rem;
+      // width: 343px;
+      @media (min-width: 680px) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .card {
+        background-color: $lightmode-light;
+        width: 100%;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border: 2px solid $lightmode-blue;
+        border-top: 30px solid $lightmode-blue;
+        @media (min-width: 680px) {
+          flex: 1 0 45%;
+          margin: 0;
+        }
+        @media (min-width: 1040px) {
+          flex: 0 0 calc((100% / 4) - (((4 - 1) / 4) * 1rem));
+          margin: 0;
+        }
+        .callsign {
+          text-align: center;
+        }
+        .info {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+        .imgHolder {
+          .image {
+            max-width: 100%;
+          }
+        }
+      }
+      .noCard {
+        background-color: $lightmode-light;
+        padding: 3rem;
+        margin-bottom: 2rem;
+        border: 2px solid $lightmode-blue;
+        border-top: 30px solid $lightmode-blue;
+        .callsign {
+          text-align: center;
+        }
+        .imgHolder {
+          .image {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* switch - Boxen runt slider */
+.switchBtn {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+
+  /* Gömmer default HTML checkbox */
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked {
+      //När den är i kryssad
+
+      + {
+        .slider {
+          //Gör detta med slider som är Lila bg
+          background-color: $darkmode-text;
+
+          &:before {
+            //Påverkar cirkeln
+            transform: translateX(23px); //hur långt cirkel förflyttar sig
+            background-color: $darkmode-dark;
+          }
+        }
+      }
+    }
+
+    &:focus {
+      //När den är markerad klickad på
+      + {
+        .slider {
+          //Väljer alla .slider som är placerade direkt efter input
+          //Skugga när man klickar
+          box-shadow: 0 0 2px $darkmode-dark;
+        }
+      }
+    }
+  }
+
+  /* slider */
+  .slider {
+    //Lila BG
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $darkmode-dark;
+    border-radius: 34px;
+    transition: 0.4s;
+
+    &:before {
+      //Cirkeln i slider
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: $darkmode-text;
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+  }
+}
+
+//Skapa upp en klass för darkmode, stylar allt darkmode relaterat här
+.dark {
+  background-image: $bg-dark;
+  background-size: cover;
+  // color: $darkmode-text;
+  header {
+    background-color: $darkmode-purple;
+  }
+  .container {
+    .inputContainer {
+      background-color: $darkmode-dark;
+      border: 4px solid $darkmode-purple;
+      border-top: 30px solid $darkmode-purple;
+      color: $darkmode-text;
+      #btn_add {
+        padding: 0rem 1rem;
+        background-color: $field;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        color: $lightmode-text;
+        border: 1px solid $darkmode-darker;
+
+        &:enabled {
+          background-color: $field;
+          border: 3px solid $darkmode-purple;
+          color: $lightmode-text;
+          font-weight: 900;
+        }
+        &:focus {
+          border: 2px solid $darkmode-dark;
+        }
+      }
+    }
+    h2 {
+      color: $darkmode-text;
+    }
+    .contentContainer {
+      .card {
+        background-color: $darkmode-dark;
+        border: 4px solid $darkmode-purple;
+        border-top: 30px solid $darkmode-purple;
+        color: $darkmode-text;
+      }
+      .noCard {
+        background-color: $darkmode-dark;
+        border: 4px solid $darkmode-purple;
+        border-top: 30px solid $darkmode-purple;
+        color: $darkmode-text;
+      }
+    }
+  }
+}
